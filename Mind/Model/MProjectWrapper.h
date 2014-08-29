@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PSTreeGraphModelNode.h"
 #import "MXYNode.h"
+#import "MTaskLeafView.h"
 
 @interface MProjectWrapper :  NSObject <PSTreeGraphModelNode, NSCopying>
 {
@@ -17,6 +18,8 @@
 }
 
 + (MProjectWrapper *)wrapperForNode: (MXYNode*)node;
+
+@property (strong) MTaskLeafView* leafView;
 
 - (CGFloat)getFullLenghtForTask;
 

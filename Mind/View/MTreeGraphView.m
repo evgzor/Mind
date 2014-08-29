@@ -7,8 +7,13 @@
 //
 
 #import "MTreeGraphView.h"
+#import "MProjectWrapper.h"
 
 @implementation MTreeGraphView
+{
+
+    MTaskLeafView*  leafNode;
+}
 
 #pragma mark - UIView
 
@@ -39,6 +44,75 @@
     }
     return self;
 }
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+        UITouch *touch = [[event allTouches] anyObject];
+    
+    CGPoint viewPoint = [touch locationInView:self];
+    
+    CGPoint touchLocation = [touch locationInView:self.superview];
+    
+   
+     
+     // Identify the mdoel node (if any) that the user clicked, and make it the new selection.
+     MProjectWrapper*  hitModelNode = [self modelNodeAtPoint:viewPoint];
+    
+    if (hitModelNode) {
+        
+        CGRect frame = hitModelNode.leafView.frame;
+        frame.origin = touchLocation;
+
+        frame.origin.x-=frame.size.width;
+        frame.origin.y-=frame.size.height;
+        
+        
+        leafNode = hitModelNode.leafView;
+        //self.gestureRecognizers = @[panRecognizer];
+        
+        UIScrollView* scroll = self.superview;
+        scroll.scrollEnabled = NO;
+    }
+    
+    
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (leafNode) {
+        UITouch *touch = [[event allTouches] anyObject];
+        CGPoint touchLocation = [touch locationInView:self];
+        
+        CGRect frame = leafNode.frame;
+        frame.origin = touchLocation;
+        
+        frame.origin.x-=frame.size.width/2;
+        frame.origin.y-=frame.size.height/2;
+        
+        leafNode.frame = frame;
+
+        [self addSubview:leafNode];
+    }
+    
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UIScrollView* scroll = self.superview;
+    scroll.scrollEnabled = YES;
+    
+    [leafNode removeFromSuperview];
+    
+    leafNode = nil;
+    id <RedrawLeafs> delegate = (id <RedrawLeafs>) self.delegate;
+    if([delegate conformsToProtocol:@protocol(RedrawLeafs)])
+    {
+        [delegate updateView];
+    }
+}
+
 
 
 /*

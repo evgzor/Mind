@@ -8,6 +8,7 @@
 
 #import "MProjectVC.h"
 #import "MProjectWrapper.h"
+#import "PSBaseSubtreeView.h"
 
 
 @interface MProjectVC ()
@@ -70,7 +71,19 @@
     [self configureViewPositionFor:[UIApplication sharedApplication].statusBarOrientation];
     scrollView.layer.borderColor = [UIColor redColor].CGColor;
     scrollView.layer.borderWidth = 1.5;
+    
+    _treeGraphView.layer.borderColor = [UIColor yellowColor].CGColor;
+    _treeGraphView.layer.borderWidth = 1.5;
+    
+    [_treeGraphView rootSubtreeView].layer.borderColor = [UIColor brownColor].CGColor;
+    [_treeGraphView rootSubtreeView].layer.borderWidth = 1.5;
+
+    
+    _treeGraphView.showsSubtreeFrames = YES;
+    [[_treeGraphView rootSubtreeView] resursiveSetSubtreeBordersNeedDisplay];
 }
+
+
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -88,19 +101,23 @@
 
 -(void)configureViewPositionFor : (UIInterfaceOrientation) interfaceOrientation
 {
-    CGPoint point = CGPointMake(100.,50.);
+    CGPoint point = CGPointMake(100., 65);
+    CGSize size = _treeGraphView.frame.size;
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
         scrollView.frame = CGRectMake(point.x, point.y, self.view.frame.size.width - point.x, self.view.frame.size.height - point.y);
-        CGSize size = _treeGraphView.frame.size;
+        
         scrollView.contentSize = size;
     }
     else
     {
         scrollView.frame = CGRectMake(point.x, point.y, self.view.frame.size.width - point.x, self.view.frame.size.height - point.y);
-        scrollView.contentSize = _treeGraphView.frame.size;
+        size.width+=3000;
+
+        scrollView.contentSize = size;
     }
     [self updateView];
-
+    [[self.treeGraphView rootSubtreeView] resursiveSetSubtreeBordersNeedDisplay];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -173,6 +190,8 @@
 	MProjectWrapper*objectWrapper = (MProjectWrapper*)modelNode;
 	MTaskLeafView *leafView = (MTaskLeafView*)nodeView;
     leafView.delegate = self;
+    leafView.treeView = _treeGraphView;
+    objectWrapper.leafView = leafView;
     
     CGFloat a= [objectWrapper getFullLenghtForTask];
     
@@ -196,6 +215,7 @@
     [self.treeGraphView setNodeViewNibName:@"MZeroRoot"];
     [self createProject];
 }
+
 
 
 @end

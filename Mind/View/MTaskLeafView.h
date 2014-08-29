@@ -19,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *expandButton;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
+@property (nonatomic) PSBaseTreeGraphView* treeView;
+
 
 @end
 
