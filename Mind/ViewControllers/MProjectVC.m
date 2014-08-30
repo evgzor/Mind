@@ -93,27 +93,21 @@
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
                                           duration:(NSTimeInterval)duration
 {
+    [super willRotateToInterfaceOrientation:interfaceOrientation duration:duration];
 	// Keep the view in sync
 	[self.treeGraphView parentClipViewDidResize:nil];
     [self configureViewPositionFor:interfaceOrientation];
     
 }
 
+
 -(void)configureViewPositionFor : (UIInterfaceOrientation) interfaceOrientation
 {
-    CGPoint point = CGPointMake(100., 65);
-    CGSize size = _treeGraphView.frame.size;
-    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        scrollView.frame = CGRectMake(point.x, point.y, self.view.frame.size.width - point.x, self.view.frame.size.height - point.y);
-        
-        scrollView.contentSize = size;
+    if (UIInterfaceOrientationIsPortrait(interfaceOrientation))
+    {
     }
     else
     {
-        scrollView.frame = CGRectMake(point.x, point.y, self.view.frame.size.width - point.x, self.view.frame.size.height - point.y);
-        size.width+=3000;
-
-        scrollView.contentSize = size;
     }
     [self updateView];
     [[self.treeGraphView rootSubtreeView] resursiveSetSubtreeBordersNeedDisplay];
@@ -142,34 +136,40 @@
     MXYNode* project = [[MXYNode alloc] init];
     NSMutableArray* tasks = [@[] mutableCopy];
     for (int i =0; i<4; i++) {
-        [tasks addObject:[[MXYNode alloc] initWithParent:project data:nil]];
+        [tasks addObject:[[MXYNode alloc] initWithParent:project data:[[MTaskModel alloc] init]]];
     }
     
     
     MXYNode* node =tasks[2];
     
-   MXYNode* subTsk1 = [[MXYNode alloc] initWithParent: node data:nil];
-   MXYNode* subTsk2 = [[MXYNode alloc] initWithParent: node data:nil];
+   MXYNode* subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
+   MXYNode* subTsk2 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
 
     for (int i =0; i<4; i++) {
-        [[MXYNode alloc] initWithParent:subTsk1 data:nil];
+        [[MXYNode alloc] initWithParent:subTsk1 data:[[MTaskModel alloc] init]];
     }
     
     for (int i =0; i<4; i++) {
-        [[MXYNode alloc] initWithParent:subTsk2 data:nil];
+        [[MXYNode alloc] initWithParent:subTsk2 data:[[MTaskModel alloc] init]];
     }
     
     node =tasks[3];
     
-    subTsk1 = [[MXYNode alloc] initWithParent: node data:nil];
+    subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
+    subTsk2 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
+    
+    NSMutableArray* subTasks = [@[] mutableCopy];
+    for (int i =0; i<4; i++) {
+        [subTasks addObject:[[MXYNode alloc] initWithParent:subTsk1 data:[[MTaskModel alloc] init]]];
+    }
+    
+    node =subTasks[3];
+    
+    subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
     subTsk2 = [[MXYNode alloc] initWithParent: node data:nil];
     
     for (int i =0; i<4; i++) {
-        [[MXYNode alloc] initWithParent:subTsk1 data:nil];
-    }
-    
-    for (int i =0; i<4; i++) {
-        [[MXYNode alloc] initWithParent:subTsk2 data:nil];
+        [[MXYNode alloc] initWithParent:subTsk2 data:[[MTaskModel alloc] init]];
     }
 
     
@@ -189,9 +189,17 @@
 	// NOT FLEXIBLE: treat it like a model node instead of the interface.
 	MProjectWrapper*objectWrapper = (MProjectWrapper*)modelNode;
 	MTaskLeafView *leafView = (MTaskLeafView*)nodeView;
+    
     leafView.delegate = self;
     leafView.treeView = _treeGraphView;
-    objectWrapper.leafView = leafView;
+    //objectWrapper.leafView = leafView;
+    [objectWrapper getNode].data.taskName = [NSString stringWithFormat:@"%d",arc4random()%200];
+
+    leafView.titleLabel.text = [objectWrapper getNode].data.taskName;
+    
+    CGRect frame = leafView.frame;
+    frame.size.width = +10;
+    //leafView.frame = frame;
     
     CGFloat a= [objectWrapper getFullLenghtForTask];
     

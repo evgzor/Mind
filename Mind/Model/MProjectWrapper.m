@@ -113,7 +113,7 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
 {
     NSMutableArray* arr = [@[] mutableCopy];
     [[self childModelNodes] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [arr addObject:[NSNumber numberWithDouble:(double)(200 + 100*idx)]];
+        [arr addObject:[NSNumber numberWithDouble:(double)(100 + +100*idx)]];
     }];
     
     return arr;

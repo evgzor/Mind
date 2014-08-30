@@ -19,8 +19,10 @@
 
 + (MProjectWrapper *)wrapperForNode: (MXYNode*)node;
 
-@property (strong) MTaskLeafView* leafView;
+//@property (strong) MTaskLeafView* leafView;
 
 - (CGFloat)getFullLenghtForTask;
+
+- (MXYNode*) getNode;
 
 @end

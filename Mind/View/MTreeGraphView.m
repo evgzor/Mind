@@ -39,7 +39,7 @@
         
         // Example: Set a larger content margin than default.
         
-        //        self.contentMargin = 60.0;
+                self.contentMargin = 0.0;
         
     }
     return self;
@@ -55,10 +55,14 @@
     
     CGPoint touchLocation = [touch locationInView:self.superview];
     
-   
+    if([touch tapCount] == 2) {
+        
+        NSLog(@"double touch");
+    }
+
      
      // Identify the mdoel node (if any) that the user clicked, and make it the new selection.
-     MProjectWrapper*  hitModelNode = [self modelNodeAtPoint:viewPoint];
+    /* MProjectWrapper*  hitModelNode = [self modelNodeAtPoint:viewPoint];
     
     if (hitModelNode) {
         
@@ -74,11 +78,11 @@
         
         UIScrollView* scroll = self.superview;
         scroll.scrollEnabled = NO;
-    }
+    }*/
     
     
 }
-
+/*
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (leafNode) {
@@ -113,7 +117,7 @@
     }
 }
 
-
+*/
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -123,5 +127,6 @@
     // Drawing code
 }
 */
+
 
 @end

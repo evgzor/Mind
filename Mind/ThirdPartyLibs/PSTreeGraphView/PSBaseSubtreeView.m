@@ -321,7 +321,7 @@ static CGFloat subtreeBorderWidth(void)
             totalWidth -= siblingSpacing;
         }
     }
-    
+     parentChildSpacing = [[_spacingList valueForKeyPath:@"@max.doubleValue"] doubleValue];
     // Size self to contain our nodeView all our child SubtreeViews, and position our
     // nodeView and connectorsView.
     if (subtreeViewCount > 0) {
@@ -379,7 +379,7 @@ static CGFloat subtreeBorderWidth(void)
         if (( treeOrientation == PSTreeGraphOrientationStyleHorizontal ) ||
             ( treeOrientation == PSTreeGraphOrientationStyleHorizontalFlipped )){
             if (_spacingList) {
-                parentChildSpacing = [[_spacingList valueForKeyPath:@"@max.doubleValue"] doubleValue];
+
                 _connectorsView.spacingList = _spacingList;
             }
             _connectorsView.frame = CGRectMake(rootNodeViewSize.width,
@@ -544,6 +544,7 @@ static CGFloat subtreeBorderWidth(void)
     for (UIView *subview in subviews) {
         if ([subview isKindOfClass:[PSBaseSubtreeView class]]) {
             [(PSBaseSubtreeView *)subview updateSubtreeBorder];
+            [(PSBaseSubtreeView *)subview resursiveSetSubtreeBordersNeedDisplay];
         }
     }
 }

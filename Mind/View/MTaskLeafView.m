@@ -7,6 +7,7 @@
 //
 
 #import "MTaskLeafView.h"
+#import "MProjectWrapper.h"
 
 @implementation MTaskLeafView
 {
@@ -60,6 +61,12 @@
     UITouch *touch = [[event allTouches] anyObject];
     touchView = touch.view;
     
+    CGPoint viewPoint = [touch locationInView:_treeView];
+    
+    // Identify the mdoel node (if any) that the user clicked, and make it the new selection.
+    MProjectWrapper*  hitModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
+
+    
     if ([touchView isKindOfClass:[self class]]) {
         CGPoint touchLocation = [touch locationInView:_treeView.superview];
         
@@ -76,6 +83,12 @@
         // Remember original location
         lastLocation = self.center;
     }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_delegate updateView];
+    [self removeFromSuperview];
 }
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer

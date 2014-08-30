@@ -486,7 +486,7 @@
         // Compute self's new minimumFrameSize.  Make sure it's pixel-integral.
         CGFloat margin = [self contentMargin];
         CGSize minimumBoundsSize = CGSizeMake(rootSubtreeViewSize.width + 2.0 * margin,
-                                              rootSubtreeViewSize.height + 2.0 * margin);
+                                              rootSubtreeViewSize.height + 2.0 * margin +120);
 
 		_minimumFrameSize = minimumBoundsSize;
 
