@@ -52,6 +52,14 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     return _wrappedNode;
 }
 
+- (MXYNode*) getNodeFrom: (id<PSTreeGraphModelNode>)modelNode
+{
+    if ([modelNode isKindOfClass:[self class]]) {
+        return [(MProjectWrapper*)modelNode getNode];
+    }
+    return nil;
+}
+
 #pragma mark -- private functions
 
 -(MProjectWrapper*)getParentNodeWrapper
@@ -85,7 +93,7 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
 {
     static float lenght = 0;
     CGFloat result = 0.;
-    if (self.childModelNodes) {
+    /*if (self.childModelNodes) {
         for (MProjectWrapper* element in self.childModelNodes) {
             int i =0;
             
@@ -102,7 +110,7 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     
     if (lenght < result) {
         lenght = result;
-    }
+    }*/
 
     
     return result;
@@ -117,6 +125,19 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     }];
     
     return arr;
+}
+
+-(void)movetoParentMode:(id<PSTreeGraphModelNode>)parentNode
+{
+    MXYNode* child = [self getNodeFrom: self];
+    MXYNode* parent = [self getNodeFrom:parentNode];
+    
+    [child.parent removeChildNode:child];
+    
+    for (MXYNode*element in child.children) {
+        [child.parent addChildNode:element];
+    }
+    [parent addChildNode:child];
 }
 
 @end

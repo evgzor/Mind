@@ -34,4 +34,6 @@
 
 - (NSArray*) spasingList;
 
+-(void)movetoParentMode:(id<PSTreeGraphModelNode>)parentNode;
+
 @end

@@ -14,6 +14,7 @@
     CGPoint lastLocation;
     UIPanGestureRecognizer *panRecognizer;
     UIView* touchView;
+    MProjectWrapper*  selectedModelNode;
 }
 
 #pragma mark - NSCoding
@@ -44,6 +45,13 @@
          self.center = CGPointMake(lastLocation.x + translation.x,
                                    lastLocation.y + translation.y);
          
+         CGPoint viewPoint = self.center;
+         
+         MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
+         if (selectedModelNode && parentModelNode) {
+             [selectedModelNode movetoParentMode:parentModelNode];
+         }
+
          if(uiPanGestureRecognizer.state == UIGestureRecognizerStateEnded)
          {
              [_delegate updateView];
@@ -64,7 +72,7 @@
     CGPoint viewPoint = [touch locationInView:_treeView];
     
     // Identify the mdoel node (if any) that the user clicked, and make it the new selection.
-    MProjectWrapper*  hitModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
+    selectedModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
 
     
     if ([touchView isKindOfClass:[self class]]) {
@@ -87,6 +95,17 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    UITouch *touch = [[event allTouches] anyObject];
+    touchView = touch.view;
+    
+    CGPoint viewPoint = [touch locationInView:_treeView];
+    
+    MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
+    if (selectedModelNode && parentModelNode) {
+        [selectedModelNode movetoParentMode:parentModelNode];
+    }
+    
+    
     [_delegate updateView];
     [self removeFromSuperview];
 }

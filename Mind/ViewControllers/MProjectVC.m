@@ -16,6 +16,9 @@
 @end
 
 @implementation MProjectVC
+{
+    MXYNode* _project;
+}
 
 
 #pragma mark - Property Accessors
@@ -133,10 +136,10 @@
 
 -(void)createProject
 {
-    MXYNode* project = [[MXYNode alloc] init];
+    _project = [[MXYNode alloc] init];
     NSMutableArray* tasks = [@[] mutableCopy];
     for (int i =0; i<4; i++) {
-        [tasks addObject:[[MXYNode alloc] initWithParent:project data:[[MTaskModel alloc] init]]];
+        [tasks addObject:[[MXYNode alloc] initWithParent:_project data:[[MTaskModel alloc] init]]];
     }
     
     
@@ -155,7 +158,7 @@
     
     node =tasks[3];
     
-    subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
+    /*subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
     subTsk2 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
     
     NSMutableArray* subTasks = [@[] mutableCopy];
@@ -170,11 +173,11 @@
     
     for (int i =0; i<4; i++) {
         [[MXYNode alloc] initWithParent:subTsk2 data:[[MTaskModel alloc] init]];
-    }
+    }*/
 
     
     
-    [self setProjectNode:project];
+    [self setProjectNode:_project];
 }
 
 #pragma mark - TreeGraph Delegate
@@ -201,7 +204,7 @@
     frame.size.width = +10;
     //leafView.frame = frame;
     
-    CGFloat a= [objectWrapper getFullLenghtForTask];
+    //CGFloat a= [objectWrapper getFullLenghtForTask];
     
     [self.treeGraphView setNodeViewNibName:@"MTaskNode"];
     
@@ -221,7 +224,14 @@
 -(void)updateView
 {
     [self.treeGraphView setNodeViewNibName:@"MZeroRoot"];
-    [self createProject];
+    
+    MXYNode* project = [[MXYNode alloc] init];
+    
+    for (MXYNode* child in _project.children) {
+        [project addChildNode:child];
+    }
+    
+    [self setProjectNode:project];
 }
 
 

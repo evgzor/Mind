@@ -34,21 +34,29 @@
     return self;
 }
 
-- (void)addChildNode:(id)node
+- (void)addChildNode:(MXYNode*)node
 {
     NSMutableArray* children =  [NSMutableArray arrayWithArray:_children];
     
     [children addObject:node];
     
     _children = children;
+    
+    [node setParentNode:self];
 }
-- (void)removeChildNode:(id)node
+- (void)removeChildNode:(MXYNode*)node
 {
      NSMutableArray* children =  [NSMutableArray arrayWithArray:_children];
     
     [children removeObject:node];
     
     _children = children;
+
+}
+
+-(void)setParentNode:(MXYNode *)parentNode
+{
+    _parent = parentNode;
 }
 
 
