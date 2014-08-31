@@ -280,8 +280,8 @@ static CGFloat subtreeBorderWidth(void)
                 nextSubtreeViewOrigin.y += subtreeViewSize.height + siblingSpacing;
                 
                 // Keep track of the widest SubtreeView width we encounter.
-                if (maxWidth < subtreeViewSize.width) {
-                    maxWidth = subtreeViewSize.width;
+                if (maxWidth < subtreeViewSize.width + [_spacingList[subtreeViewCount-1] doubleValue]) {
+                    maxWidth = subtreeViewSize.width + [_spacingList[subtreeViewCount-1] doubleValue];
                 }
                 
             } else {
@@ -321,7 +321,6 @@ static CGFloat subtreeBorderWidth(void)
             totalWidth -= siblingSpacing;
         }
     }
-     parentChildSpacing = [[_spacingList valueForKeyPath:@"@max.doubleValue"] doubleValue];
     // Size self to contain our nodeView all our child SubtreeViews, and position our
     // nodeView and connectorsView.
     if (subtreeViewCount > 0) {
@@ -329,7 +328,7 @@ static CGFloat subtreeBorderWidth(void)
         // Determine our width and height.
         if (( treeOrientation == PSTreeGraphOrientationStyleHorizontal ) ||
             ( treeOrientation == PSTreeGraphOrientationStyleHorizontalFlipped )) {
-            selfTargetSize = CGSizeMake(rootNodeViewSize.width + parentChildSpacing + maxWidth,
+            selfTargetSize = CGSizeMake(rootNodeViewSize.width + /*parentChildSpacing*/ + maxWidth,
                                         MAX(totalHeight, rootNodeViewSize.height) );
         } else {
             selfTargetSize = CGSizeMake(MAX(totalWidth, rootNodeViewSize.width),
@@ -379,7 +378,7 @@ static CGFloat subtreeBorderWidth(void)
         if (( treeOrientation == PSTreeGraphOrientationStyleHorizontal ) ||
             ( treeOrientation == PSTreeGraphOrientationStyleHorizontalFlipped )){
             if (_spacingList) {
-
+                parentChildSpacing = [[_spacingList valueForKeyPath:@"@max.doubleValue"] doubleValue];
                 _connectorsView.spacingList = _spacingList;
             }
             _connectorsView.frame = CGRectMake(rootNodeViewSize.width,

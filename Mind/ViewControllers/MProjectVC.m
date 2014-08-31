@@ -166,7 +166,7 @@
     node =subTasks[3];
     
     subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
-    subTsk2 = [[MXYNode alloc] initWithParent: node data:nil];
+    subTsk2 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
     
     for (int i =0; i<4; i++) {
         [[MXYNode alloc] initWithParent:subTsk2 data:[[MTaskModel alloc] init]];
