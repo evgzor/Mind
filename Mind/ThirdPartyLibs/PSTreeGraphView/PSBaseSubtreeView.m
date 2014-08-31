@@ -269,7 +269,7 @@ static CGFloat subtreeBorderWidth(void)
                 (treeOrientation == PSTreeGraphOrientationStyleHorizontalFlipped )) {
                 // Since SubtreeView is unflipped, lay out our child SubtreeViews going upward from our
                 // bottom edge, from last to first.
-                double spacing = [_spacingList[subtreeViewCount-1] doubleValue];
+                double spacing = [_spacingList[_spacingList.count - subtreeViewCount] doubleValue];
                 
                 subview.frame = CGRectMake( nextSubtreeViewOrigin.x + spacing,
                                            nextSubtreeViewOrigin.y,
@@ -280,8 +280,8 @@ static CGFloat subtreeBorderWidth(void)
                 nextSubtreeViewOrigin.y += subtreeViewSize.height + siblingSpacing;
                 
                 // Keep track of the widest SubtreeView width we encounter.
-                if (maxWidth < subtreeViewSize.width + [_spacingList[subtreeViewCount-1] doubleValue]) {
-                    maxWidth = subtreeViewSize.width + [_spacingList[subtreeViewCount-1] doubleValue];
+                if (maxWidth < subtreeViewSize.width + [_spacingList[_spacingList.count - subtreeViewCount] doubleValue]) {
+                    maxWidth = subtreeViewSize.width + [_spacingList[_spacingList.count - subtreeViewCount] doubleValue];
                 }
                 
             } else {

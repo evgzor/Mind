@@ -120,9 +120,10 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
 -(NSArray *)spasingList
 {
     NSMutableArray* arr = [@[] mutableCopy];
-    [[self childModelNodes] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [arr addObject:[NSNumber numberWithDouble:(double)(100 + +100*idx)]];
-    }];
+    
+    for (MProjectWrapper* element in [self childModelNodes]) {
+        [arr addObject:[NSNumber numberWithDouble:[element getNode].data.timeDistance]];
+    }
     
     return arr;
 }
@@ -135,6 +136,7 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     [child.parent removeChildNode:child];
     
     for (MXYNode*element in child.children) {
+        [child removeChildNode:element];
         [child.parent addChildNode:element];
     }
     [parent addChildNode:child];

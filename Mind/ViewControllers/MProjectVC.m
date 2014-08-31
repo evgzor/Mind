@@ -18,6 +18,7 @@
 @implementation MProjectVC
 {
     MXYNode* _project;
+    NSInteger _dataCount;
 }
 
 
@@ -32,6 +33,7 @@
         
         _treeGraphView.treeGraphOrientation  = PSTreeGraphOrientationStyleHorizontal;
         _treeGraphView.treeGraphFlipped = NO;
+    _dataCount = 0;
         
         /* Get an ObjCClassWrapper for the named Objective-C Class, and set it as the TreeGraph's root.*/
         [_treeGraphView setModelRoot:[MProjectWrapper wrapperForNode:project]];
@@ -137,23 +139,42 @@
 -(void)createProject
 {
     _project = [[MXYNode alloc] init];
+    MTaskModel* data;
     NSMutableArray* tasks = [@[] mutableCopy];
     for (int i =0; i<4; i++) {
-        [tasks addObject:[[MXYNode alloc] initWithParent:_project data:[[MTaskModel alloc] init]]];
+        data = [[MTaskModel alloc] init];
+        data.taskName = [NSString stringWithFormat:@"Project%d",1+i];
+        data.timeDistance = 60 -+i*20;
+        [tasks addObject:[[MXYNode alloc] initWithParent:_project data:data]];
     }
     
     
     MXYNode* node =tasks[2];
     
-   MXYNode* subTsk1 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
-   MXYNode* subTsk2 = [[MXYNode alloc] initWithParent: node data:[[MTaskModel alloc] init]];
+    data = [[MTaskModel alloc] init];
+    data.taskName = @"1";
+    data.timeDistance = 100;
+    
+   MXYNode* subTsk1 = [[MXYNode alloc] initWithParent: node data:data];
+   
+    data = [[MTaskModel alloc] init];
+    data.taskName = @"2";
+    data.timeDistance = 170;
+    
+   MXYNode* subTsk2 = [[MXYNode alloc] initWithParent: node data:data];
 
     for (int i =0; i<4; i++) {
-        [[MXYNode alloc] initWithParent:subTsk1 data:[[MTaskModel alloc] init]];
+        data = [[MTaskModel alloc] init];
+        data.taskName = [NSString stringWithFormat:@"%d",3+i];
+        data.timeDistance = 50+i*200;
+        [[MXYNode alloc] initWithParent:subTsk1 data:data];
     }
     
     for (int i =0; i<4; i++) {
-        [[MXYNode alloc] initWithParent:subTsk2 data:[[MTaskModel alloc] init]];
+        data = [[MTaskModel alloc] init];
+        data.taskName = [NSString stringWithFormat:@"%d",8+i];
+        data.timeDistance = 140+i*70;
+        [[MXYNode alloc] initWithParent:subTsk2 data:data];
     }
     
     node =tasks[3];
@@ -196,7 +217,8 @@
     leafView.delegate = self;
     leafView.treeView = _treeGraphView;
     //objectWrapper.leafView = leafView;
-    [objectWrapper getNode].data.taskName = [NSString stringWithFormat:@"%d",arc4random()%200];
+    //[objectWrapper getNode].data.taskName = [NSString stringWithFormat:@"%d",_dataCount];
+    _dataCount++;
 
     leafView.titleLabel.text = [objectWrapper getNode].data.taskName;
     

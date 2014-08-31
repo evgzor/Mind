@@ -12,4 +12,6 @@
 
 @property(strong) NSString* taskName;
 
+@property CGFloat timeDistance;
+
 @end

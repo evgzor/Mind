@@ -205,7 +205,7 @@
 					}
 				}
                 
-                CGPoint point =  CGPointMake(rootIntersection.x + [_spacingList[_spacingList.count - subtreeViewCount] doubleValue], targetPoint.y);
+                CGPoint point =  CGPointMake(rootIntersection.x + [_spacingList[subtreeViewCount - 1] doubleValue], targetPoint.y);
                 
                 [path addLineToPoint:point];
                 
