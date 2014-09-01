@@ -86,6 +86,9 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     for (MXYNode* element in [self getChildren]) {
         [children addObject:[[self class] wrapperForNode:element]];
     }
+    
+    children = (NSMutableArray*)[[children reverseObjectEnumerator] allObjects];
+    
     return children;
 }
 

@@ -38,7 +38,7 @@
 {
     NSMutableArray* children =  [NSMutableArray arrayWithArray:_children];
     
-    [children insertObject:node atIndex:0];
+    [children addObject:node];
     
     _children = children;
     
