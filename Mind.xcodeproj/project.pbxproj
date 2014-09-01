@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D03630319B483AE00232E43 /* PSBaseSubtreeView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D03630219B483AE00232E43 /* PSBaseSubtreeView+Utils.m */; };
 		0D1879D119AF201E004EA43C /* MZeroRoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1879D019AF201E004EA43C /* MZeroRoot.xib */; };
 		0D1879D519AF57C8004EA43C /* PSHTreeGraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1879D419AF57C8004EA43C /* PSHTreeGraphViewController.xib */; };
 		0D42553C19A775A300ED96FA /* MTreeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D42553B19A775A300ED96FA /* MTreeGraphView.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D03630119B483AE00232E43 /* PSBaseSubtreeView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PSBaseSubtreeView+Utils.h"; path = "Mind/View/PSBaseSubtreeView+Utils.h"; sourceTree = "<group>"; };
+		0D03630219B483AE00232E43 /* PSBaseSubtreeView+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PSBaseSubtreeView+Utils.m"; path = "Mind/View/PSBaseSubtreeView+Utils.m"; sourceTree = "<group>"; };
 		0D1879D019AF201E004EA43C /* MZeroRoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZeroRoot.xib; path = Mind/View/MZeroRoot.xib; sourceTree = SOURCE_ROOT; };
 		0D1879D419AF57C8004EA43C /* PSHTreeGraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PSHTreeGraphViewController.xib; path = Mind/View/PSHTreeGraphViewController.xib; sourceTree = "<group>"; };
 		0D42553A19A775A300ED96FA /* MTreeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTreeGraphView.h; path = Mind/View/MTreeGraphView.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				0D42554819A7789100ED96FA /* MTaskNode.xib */,
 				0D1879D019AF201E004EA43C /* MZeroRoot.xib */,
 				0D1879D419AF57C8004EA43C /* PSHTreeGraphViewController.xib */,
+				0D03630119B483AE00232E43 /* PSBaseSubtreeView+Utils.h */,
+				0D03630219B483AE00232E43 /* PSBaseSubtreeView+Utils.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				0D9CF99819A72CE4003EDDC2 /* ViewController.m in Sources */,
 				0D9CF9DD19A75F80003EDDC2 /* MTaskModel.m in Sources */,
 				0D9CF9CD19A73210003EDDC2 /* MProjectVC.m in Sources */,
+				0D03630319B483AE00232E43 /* PSBaseSubtreeView+Utils.m in Sources */,
 				0D42554519A776C100ED96FA /* MProjectLeafView.m in Sources */,
 				0D9CF9CA19A73059003EDDC2 /* MLoginPageVC.m in Sources */,
 				0D9CF98F19A72CE4003EDDC2 /* AppDelegate.m in Sources */,

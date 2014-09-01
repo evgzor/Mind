@@ -47,13 +47,15 @@
          
          CGPoint viewPoint = self.center;
          
-         MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
-         if (selectedModelNode && parentModelNode) {
-             [selectedModelNode movetoParentMode:parentModelNode];
-         }
 
          if(uiPanGestureRecognizer.state == UIGestureRecognizerStateEnded)
          {
+             MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
+             //MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView connectToModelNodeAtRect:self.frame];
+             if (selectedModelNode && parentModelNode) {
+                 [selectedModelNode movetoParentMode:parentModelNode];
+             }
+             
              [_delegate updateView];
              [self removeFromSuperview];
          }

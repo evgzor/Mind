@@ -8,6 +8,7 @@
 
 #import "MTreeGraphView.h"
 #import "MProjectWrapper.h"
+#import "PSBaseSubtreeView+Utils.h"
 
 @implementation MTreeGraphView
 {
@@ -81,6 +82,25 @@
     }*/
     
     
+}
+
+- (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect
+{
+    // Since we've composed our content using views (SubtreeViews and enclosed nodeViews),
+    // we can use UIView's -hitTest: method to easily identify our deepest descendant view
+    // under the given point. We rely on the front-to-back order of hit-testing to ensure
+    // that we return the root of a collapsed subtree, instead of one of its descendant nodes.
+    // (To do this, we must make sure, when collapsing a subtree, to keep the SubtreeView's
+    // nodeView frontmost among its siblings.)
+    
+    PSBaseSubtreeView *rootSubtreeView = [self rootSubtreeView];
+    //CGPoint subviewPoint = [self convertPoint:p toView:rootSubtreeView];
+    
+    CGRect subviewRect = [self convertRect:rect toView:rootSubtreeView];
+    
+    id <PSTreeGraphModelNode> hitModelNode = [[self rootSubtreeView] connectToModelNodeAtRect:subviewRect];
+    
+    return hitModelNode;
 }
 /*
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event

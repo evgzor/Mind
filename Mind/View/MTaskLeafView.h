@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "PSBaseLeafView.h"
-#import "PSBaseTreeGraphView.h"
+#import  "MTreeGraphView.h"
 
 @protocol RedrawLeafs;
 
@@ -19,7 +19,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *expandButton;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
-@property (nonatomic) PSBaseTreeGraphView* treeView;
+@property (nonatomic) MTreeGraphView* treeView;
 
 
 @end

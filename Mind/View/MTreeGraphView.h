@@ -10,4 +10,6 @@
 
 @interface MTreeGraphView : PSBaseTreeGraphView
 
+- (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect;
+
 @end
