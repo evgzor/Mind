@@ -38,6 +38,8 @@
     return self;
 }
 
+#pragma mark - gestiure recognizer
+
 - (IBAction) detectPan:(UIPanGestureRecognizer *) uiPanGestureRecognizer
 {
      if ([touchView isKindOfClass:[self class]]) {
@@ -45,9 +47,6 @@
          self.center = CGPointMake(lastLocation.x + translation.x,
                                    lastLocation.y + translation.y);
          
-         CGPoint viewPoint = self.center;
-         
-
          if(uiPanGestureRecognizer.state == UIGestureRecognizerStateEnded)
          {
              BOOL connectToParent;

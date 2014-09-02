@@ -44,6 +44,7 @@
 		0D9CF9D419A75848003EDDC2 /* MProjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9D319A75848003EDDC2 /* MProjectWrapper.m */; };
 		0D9CF9DA19A75F5A003EDDC2 /* MXYNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9D919A75F5A003EDDC2 /* MXYNode.m */; };
 		0D9CF9DD19A75F80003EDDC2 /* MTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9DC19A75F80003EDDC2 /* MTaskModel.m */; };
+		F05D031219B61AD700813754 /* MTimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F05D031119B61AD700813754 /* MTimeLineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		0D9CF9D919A75F5A003EDDC2 /* MXYNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXYNode.m; path = Mind/Model/MXYNode.m; sourceTree = SOURCE_ROOT; };
 		0D9CF9DB19A75F80003EDDC2 /* MTaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTaskModel.h; path = Mind/Model/MTaskModel.h; sourceTree = SOURCE_ROOT; };
 		0D9CF9DC19A75F80003EDDC2 /* MTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTaskModel.m; path = Mind/Model/MTaskModel.m; sourceTree = SOURCE_ROOT; };
+		F05D031019B61AD700813754 /* MTimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTimeLineView.h; path = Mind/View/MTimeLineView.h; sourceTree = "<group>"; };
+		F05D031119B61AD700813754 /* MTimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTimeLineView.m; path = Mind/View/MTimeLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 				0D1879D419AF57C8004EA43C /* PSHTreeGraphViewController.xib */,
 				0D03630119B483AE00232E43 /* PSBaseSubtreeView+Utils.h */,
 				0D03630219B483AE00232E43 /* PSBaseSubtreeView+Utils.m */,
+				F05D031019B61AD700813754 /* MTimeLineView.h */,
+				F05D031119B61AD700813754 /* MTimeLineView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				0D9CF9CA19A73059003EDDC2 /* MLoginPageVC.m in Sources */,
 				0D9CF98F19A72CE4003EDDC2 /* AppDelegate.m in Sources */,
 				0D9CF9D419A75848003EDDC2 /* MProjectWrapper.m in Sources */,
+				F05D031219B61AD700813754 /* MTimeLineView.m in Sources */,
 				0D42553C19A775A300ED96FA /* MTreeGraphView.m in Sources */,
 				0D9CF98B19A72CE4003EDDC2 /* main.m in Sources */,
 				0D42554219A7769400ED96FA /* MTaskLeafView.m in Sources */,

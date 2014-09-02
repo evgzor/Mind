@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MProjectVC">
             <connections>
                 <outlet property="scrollView" destination="4" id="wcb-Iq-3Yw"/>
+                <outlet property="timeLine" destination="lx4-rG-BHC" id="AvY-Iy-045"/>
                 <outlet property="treeGraphView" destination="5" id="8"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -35,6 +36,11 @@
                         <outlet property="delegate" destination="-1" id="bl1-2U-WsW"/>
                     </connections>
                 </scrollView>
+                <view contentMode="scaleToFill" id="lx4-rG-BHC" userLabel="TimeLine" customClass="MTimeLineView">
+                    <rect key="frame" x="100" y="0.0" width="925" height="40"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

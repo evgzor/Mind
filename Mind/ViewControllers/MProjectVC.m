@@ -110,9 +110,11 @@
 {
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation))
     {
+        _timeLine.frame = CGRectMake(100, 65, 670, 40);
     }
     else
     {
+        _timeLine.frame = CGRectMake(100, 65, 925, 40);
     }
     [self updateView];
     [[self.treeGraphView rootSubtreeView] resursiveSetSubtreeBordersNeedDisplay];
@@ -305,6 +307,10 @@
     _project = project;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+}
 
 
 @end
