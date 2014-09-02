@@ -84,7 +84,7 @@
     
 }
 
-- (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect
+- (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect inverse:(BOOL*)inverse
 {
     // Since we've composed our content using views (SubtreeViews and enclosed nodeViews),
     // we can use UIView's -hitTest: method to easily identify our deepest descendant view
@@ -97,8 +97,8 @@
     //CGPoint subviewPoint = [self convertPoint:p toView:rootSubtreeView];
     
     CGRect subviewRect = [self convertRect:rect toView:rootSubtreeView];
-    
-    id <PSTreeGraphModelNode> hitModelNode = [[self rootSubtreeView] connectToModelNodeAtRect:subviewRect];
+
+    id <PSTreeGraphModelNode> hitModelNode = [[self rootSubtreeView] connectToModelNodeAtRect:subviewRect inverse:inverse];
     
     return hitModelNode;
 }

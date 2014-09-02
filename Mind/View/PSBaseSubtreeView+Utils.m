@@ -7,11 +7,12 @@
 //
 
 #import "PSBaseSubtreeView+Utils.h"
+#import "PSBaseTreeGraphView.h"
 
 @implementation PSBaseSubtreeView (Utils)
 
 
-- (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect
+- (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect inverse:(BOOL*)inverse
 {
 	// Check for intersection with our subviews, enumerating them in reverse order to get
 	// front-to-back ordering.  We could use UIView's -hitTest: method here, but we don't
@@ -25,17 +26,21 @@
         UIView *subview = subviews[index];
         
 		//        CGRect subviewBounds = [subview bounds];
-        CGRect subviewRect = [subview convertRect:rect fromView:self];
+        
+        CGRect subviewRect = [self convertRect:rect toView:subview.superview];
+        CGRect frame = subview.frame;
         
 		//
 		//		  if (CGPointInRect(subviewPoint, subviewBounds)) {
         
-		if (CGRectIntersectsRect(subviewRect, rect) ) {
+		if (CGRectIntersectsRect(subviewRect, frame) ) {
             
             if (subview == [self nodeView]) {
+            *inverse = (frame.size.width/2 > subviewRect.origin.x);
                 return [self modelNode];
             } else if ( [subview isKindOfClass:[PSBaseSubtreeView class]] ) {
-                return [(PSBaseSubtreeView *)subview connectToModelNodeAtRect:subviewRect];
+                subviewRect = [self convertRect:rect toView:subview];
+                return [(PSBaseSubtreeView *)subview connectToModelNodeAtRect:subviewRect inverse:inverse];
             } else {
                 // Ignore subview. It's probably a BranchView.
             }

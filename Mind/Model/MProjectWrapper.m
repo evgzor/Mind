@@ -136,13 +136,44 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     MXYNode* child = [self getNodeFrom: self];
     MXYNode* parent = [self getNodeFrom:parentNode];
     
+    [parent.parent removeChildNode:parent];
+    for (MXYNode*element in parent.children) {
+        [element removeParent];
+        [parent removeChildNode:element];
+        [parent.parent addChildNode:element];
+    }
+    
+    //[child removeChildren];
     [child.parent removeChildNode:child];
+    [child.parent addChildNode:parent];
+    
+    
+    [child removeParent];
+    [parent addChildNode:child];
+}
+
+-(void)movetoChilNode:(id<PSTreeGraphModelNode>)childNode
+{
+    MXYNode* child = [self getNodeFrom:childNode];
+    MXYNode* parent = [self getNodeFrom:self];
+    
+    /*for (MXYNode*element in parent.children) {
+        [parent removeChildNode:element];
+        [parent.parent addChildNode:element];
+    }*/
     
     for (MXYNode*element in child.children) {
+        [element removeParent];
         [child removeChildNode:element];
         [child.parent addChildNode:element];
     }
+    
+    [child.parent removeChildNode:child];
+    [child removeParent];
+    [child.parent addChildNode:parent];
+    [child removeChildren];
     [parent addChildNode:child];
+    
 }
 
 @end

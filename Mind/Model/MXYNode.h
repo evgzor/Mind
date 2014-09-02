@@ -19,6 +19,11 @@
 - (instancetype)initWithParent:(MXYNode *)parent data:(MTaskModel *)data;
 
 - (void)addChildNode:(MXYNode*)node;
+
 - (void)removeChildNode:(MXYNode*)node;
+
+-(void)removeParent;
+
+-(void)removeChildren;
 
 @end

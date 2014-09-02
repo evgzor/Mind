@@ -54,6 +54,15 @@
 
 }
 
+-(void)removeParent{
+    _parent = nil;
+}
+
+-(void)removeChildren
+{
+    _children = [@[] mutableCopy];
+}
+
 -(void)setParentNode:(MXYNode *)parentNode
 {
     _parent = parentNode;

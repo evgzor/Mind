@@ -36,4 +36,6 @@
 
 -(void)movetoParentMode:(id<PSTreeGraphModelNode>)parentNode;
 
+-(void)movetoChilNode:(id<PSTreeGraphModelNode>)childNode;
+
 @end

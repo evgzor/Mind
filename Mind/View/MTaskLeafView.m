@@ -50,11 +50,19 @@
 
          if(uiPanGestureRecognizer.state == UIGestureRecognizerStateEnded)
          {
-             MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
-             //MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView connectToModelNodeAtRect:self.frame];
+             BOOL connectToParent;
+             //MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
+             MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView connectToModelNodeAtRect:self.frame inverse:&connectToParent];
              if (selectedModelNode && parentModelNode) {
-                 [selectedModelNode movetoParentMode:parentModelNode];
+                 if (connectToParent) {
+                     [parentModelNode movetoParentMode:selectedModelNode];
+                 }
+                 else
+                 {
+                     [parentModelNode movetoChilNode: selectedModelNode];
+                 }
              }
+             selectedModelNode = nil;
              
              [_delegate updateView];
              [self removeFromSuperview];
@@ -88,7 +96,7 @@
         
         self.frame = frame;
         
-        [_treeView.superview addSubview:self];
+        [_treeView addSubview:self];
         
         // Remember original location
         lastLocation = self.center;
