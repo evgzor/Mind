@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MProjectVC">
             <connections>
-                <outlet property="scrollView" destination="4" id="wcb-Iq-3Yw"/>
+                <outlet property="_scrollView" destination="4" id="H4J-j5-WjY"/>
                 <outlet property="timeLine" destination="lx4-rG-BHC" id="AvY-Iy-045"/>
                 <outlet property="treeGraphView" destination="5" id="8"/>
                 <outlet property="view" destination="2" id="3"/>
@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="94" width="1024" height="674"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" indicatorStyle="white" id="4">
+                <scrollView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" indicatorStyle="white" id="4">
                     <rect key="frame" x="100" y="0.0" width="925" height="674"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
@@ -36,7 +36,7 @@
                         <outlet property="delegate" destination="-1" id="bl1-2U-WsW"/>
                     </connections>
                 </scrollView>
-                <view contentMode="scaleToFill" id="lx4-rG-BHC" userLabel="TimeLine" customClass="MTimeLineView">
+                <view clipsSubviews="YES" contentMode="scaleToFill" id="lx4-rG-BHC" userLabel="TimeLine" customClass="MTimeLineView">
                     <rect key="frame" x="100" y="0.0" width="925" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

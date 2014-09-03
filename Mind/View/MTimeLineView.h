@@ -10,4 +10,6 @@
 
 @interface MTimeLineView : UIView
 
+- (void)moveTickOffset:(CGFloat)offset;
+
 @end

@@ -176,4 +176,9 @@ static NSMutableDictionary *nodeToWrapperMapTable = nil;
     
 }
 
+-(BOOL)isProjectTask
+{
+    return [self getNode].parent.parent == nil;
+}
+
 @end

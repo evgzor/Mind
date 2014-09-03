@@ -19,6 +19,7 @@
 {
     MXYNode* _project;
     NSInteger _projectCount;
+    NSMutableArray* _projectViews;
 }
 
 
@@ -54,7 +55,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    _projectViews = [@[] mutableCopy];
 	// Set the delegate to self.
 	[self.treeGraphView setDelegate:self];
     
@@ -74,8 +75,8 @@
     [super viewWillAppear:animated];
     
     [self configureViewPositionFor:[UIApplication sharedApplication].statusBarOrientation];
-    scrollView.layer.borderColor = [UIColor redColor].CGColor;
-    scrollView.layer.borderWidth = 1.5;
+    _scrollView.layer.borderColor = [UIColor redColor].CGColor;
+    _scrollView.layer.borderWidth = 1.5;
     
     _treeGraphView.layer.borderColor = [UIColor yellowColor].CGColor;
     _treeGraphView.layer.borderWidth = 1.5;
@@ -110,11 +111,11 @@
 {
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation))
     {
-        _timeLine.frame = CGRectMake(100, 65, 670, 40);
+        _timeLine.frame = CGRectMake(100, 65, _treeGraphView.frame.size.width, 40);
     }
     else
     {
-        _timeLine.frame = CGRectMake(100, 65, 925, 40);
+        _timeLine.frame = CGRectMake(100, 65, _treeGraphView.frame.size.width, 40);
     }
     [self updateView];
     [[self.treeGraphView rootSubtreeView] resursiveSetSubtreeBordersNeedDisplay];
@@ -222,9 +223,20 @@
 	// NOT FLEXIBLE: treat it like a model node instead of the interface.
 	MProjectWrapper*objectWrapper = (MProjectWrapper*)modelNode;
 	MTaskLeafView *leafView = (MTaskLeafView*)nodeView;
+    if ([leafView respondsToSelector:@selector(setDelegate:)]) {
+        leafView.delegate = self;
+        leafView.treeView = _treeGraphView;
+    }
+    if (![_treeGraphView.nodeViewNibName isEqualToString:@"MZeroRoot"]&& [modelNode isProjectTask]) {
+        /*NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"MProject" owner:_treeGraphView.rootSubtreeView options:nil];
+        UIView* view = [views lastObject];
+        CGRect frame = nodeView.frame;
+        view.frame = frame;
+        [nodeView addSubview:view];*/
+        //[nodeView.superview removeFromSuperview];
+        nodeView.userInteractionEnabled = NO;
+    }
     
-    leafView.delegate = self;
-    leafView.treeView = _treeGraphView;
     //objectWrapper.leafView = leafView;
     //[objectWrapper getNode].data.taskName = [NSString stringWithFormat:@"%d",_dataCount];
 
@@ -309,6 +321,21 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [_timeLine moveTickOffset:scrollView.contentOffset.x];
+    NSLog(@"Content offset %f",scrollView.contentOffset.x);
+    
+    CGRect visibleRect;
+    visibleRect.origin = scrollView.contentOffset;
+    visibleRect.origin.y += 64.;
+    visibleRect.size = scrollView.bounds.size;
+    
+    float theScale = 1.0 / 1; //TODO -- implement scale
+    visibleRect.origin.x *= theScale;
+    visibleRect.origin.y *= theScale;
+    visibleRect.size.width *= theScale;
+    visibleRect.size.height *= theScale;
+    
+    NSLog(@"Visible rect x=%f y = %f",visibleRect.origin.x,visibleRect.origin.y);
     
 }
 

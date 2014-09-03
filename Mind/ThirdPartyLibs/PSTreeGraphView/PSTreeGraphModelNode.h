@@ -38,4 +38,6 @@
 
 -(void)movetoChilNode:(id<PSTreeGraphModelNode>)childNode;
 
+-(BOOL)isProjectTask;
+
 @end

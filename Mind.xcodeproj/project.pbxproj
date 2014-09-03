@@ -13,7 +13,7 @@
 		0D42553C19A775A300ED96FA /* MTreeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D42553B19A775A300ED96FA /* MTreeGraphView.m */; };
 		0D42554219A7769400ED96FA /* MTaskLeafView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D42554119A7769400ED96FA /* MTaskLeafView.m */; };
 		0D42554519A776C100ED96FA /* MProjectLeafView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D42554419A776C100ED96FA /* MProjectLeafView.m */; };
-		0D42554719A7775F00ED96FA /* MProjectRootNode.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D42554619A7775F00ED96FA /* MProjectRootNode.xib */; };
+		0D42554719A7775F00ED96FA /* MProject.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D42554619A7775F00ED96FA /* MProject.xib */; };
 		0D42554919A7789100ED96FA /* MTaskNode.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D42554819A7789100ED96FA /* MTaskNode.xib */; };
 		0D42554A19A7834900ED96FA /* PSBaseBranchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9B919A73002003EDDC2 /* PSBaseBranchView.m */; };
 		0D42554B19A7834900ED96FA /* PSBaseLeafView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9BB19A73002003EDDC2 /* PSBaseLeafView.m */; };
@@ -68,7 +68,7 @@
 		0D42554119A7769400ED96FA /* MTaskLeafView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTaskLeafView.m; path = Mind/View/MTaskLeafView.m; sourceTree = "<group>"; };
 		0D42554319A776C100ED96FA /* MProjectLeafView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MProjectLeafView.h; path = Mind/View/MProjectLeafView.h; sourceTree = "<group>"; };
 		0D42554419A776C100ED96FA /* MProjectLeafView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MProjectLeafView.m; path = Mind/View/MProjectLeafView.m; sourceTree = "<group>"; };
-		0D42554619A7775F00ED96FA /* MProjectRootNode.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MProjectRootNode.xib; path = Mind/View/MProjectRootNode.xib; sourceTree = "<group>"; };
+		0D42554619A7775F00ED96FA /* MProject.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MProject.xib; path = Mind/View/MProject.xib; sourceTree = "<group>"; };
 		0D42554819A7789100ED96FA /* MTaskNode.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MTaskNode.xib; path = Mind/View/MTaskNode.xib; sourceTree = "<group>"; };
 		0D9CF97B19A72CE4003EDDC2 /* Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9CF97E19A72CE4003EDDC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,7 +150,7 @@
 				0D42553B19A775A300ED96FA /* MTreeGraphView.m */,
 				0D42554019A7769400ED96FA /* MTaskLeafView.h */,
 				0D42554119A7769400ED96FA /* MTaskLeafView.m */,
-				0D42554619A7775F00ED96FA /* MProjectRootNode.xib */,
+				0D42554619A7775F00ED96FA /* MProject.xib */,
 				0D42554819A7789100ED96FA /* MTaskNode.xib */,
 				0D1879D019AF201E004EA43C /* MZeroRoot.xib */,
 				0D1879D419AF57C8004EA43C /* PSHTreeGraphViewController.xib */,
@@ -376,7 +376,7 @@
 				0D1879D519AF57C8004EA43C /* PSHTreeGraphViewController.xib in Resources */,
 				0D9CF99A19A72CE4003EDDC2 /* Images.xcassets in Resources */,
 				0D9CF99219A72CE4003EDDC2 /* Main_iPhone.storyboard in Resources */,
-				0D42554719A7775F00ED96FA /* MProjectRootNode.xib in Resources */,
+				0D42554719A7775F00ED96FA /* MProject.xib in Resources */,
 				0D9CF98919A72CE4003EDDC2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

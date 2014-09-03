@@ -18,7 +18,7 @@
 
 @interface MProjectVC : UIViewController <PSTreeGraphDelegate, RedrawLeafs, UIScrollViewDelegate>
 {
-    IBOutlet UIScrollView* scrollView;
+    IBOutlet UIScrollView* _scrollView;
 }
 // The TreeGraph
 @property(nonatomic, weak) IBOutlet MTreeGraphView *treeGraphView;

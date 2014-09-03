@@ -43,6 +43,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <connections>
+                <outlet property="detailLabel" destination="pwE-fj-gSb" id="DTi-FD-IPj"/>
+                <outlet property="expandButton" destination="w65-cP-JTL" id="Xqq-GY-sQR"/>
+                <outlet property="titleLabel" destination="VBj-y9-h1Z" id="IXm-nc-Cwq"/>
+            </connections>
         </view>
     </objects>
     <resources>

@@ -52,7 +52,7 @@
              BOOL connectToParent;
              //MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView modelNodeAtPoint:viewPoint];
              MProjectWrapper*  parentModelNode = (MProjectWrapper* )[_treeView connectToModelNodeAtRect:self.frame inverse:&connectToParent];
-             if (selectedModelNode && parentModelNode) {
+             if (selectedModelNode && parentModelNode && ![parentModelNode isProjectTask] && ![selectedModelNode isProjectTask] ) {
                  if (connectToParent) {
                      [parentModelNode movetoParentMode:selectedModelNode];
                  }
