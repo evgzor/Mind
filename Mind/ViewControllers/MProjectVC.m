@@ -229,11 +229,11 @@
     }
     if (![_treeGraphView.nodeViewNibName isEqualToString:@"MZeroRoot"]&& [modelNode isProjectTask]) {
         /*NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"MProject" owner:_treeGraphView.rootSubtreeView options:nil];
-        UIView* view = [views lastObject];
         CGRect frame = nodeView.frame;
+        UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        
         view.frame = frame;
         [nodeView addSubview:view];*/
-        //[nodeView.superview removeFromSuperview];
         nodeView.userInteractionEnabled = NO;
     }
     
