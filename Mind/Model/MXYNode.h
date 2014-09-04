@@ -26,4 +26,6 @@
 
 -(void)removeChildren;
 
+- (void)replaceInParentByNode:(MXYNode*)node;
+
 @end

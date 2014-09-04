@@ -12,6 +12,5 @@
 
 - (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect inverse:(BOOL*)inverse;
 
-- (void)projectNibName: (NSString*)projectNibName;
 
 @end

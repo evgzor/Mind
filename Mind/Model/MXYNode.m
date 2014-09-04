@@ -54,6 +54,25 @@
 
 }
 
+- (void)replaceInParentByNode:(MXYNode*)node
+{
+    NSMutableArray* parentChildren =  [NSMutableArray arrayWithArray:self.parent.children];
+    
+    NSInteger index = [self.parent.children indexOfObject:self];
+    if ([parentChildren containsObject:self]) {
+        parentChildren[index] = node;
+    }
+    
+    
+    self.parent.children = parentChildren;
+    
+    [node.parent setParentNode:self.parent];
+    
+    [self.parent setParentNode:node];
+    
+    [node addChildNode:self];
+}
+
 -(void)removeParent{
     _parent = nil;
 }
@@ -68,5 +87,9 @@
     _parent = parentNode;
 }
 
+-(void)setChildren:(NSArray *)children
+{
+    _children = children;
+}
 
 @end
