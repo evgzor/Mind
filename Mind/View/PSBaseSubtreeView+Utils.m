@@ -78,22 +78,17 @@
             //if ( [subview isKindOfClass:[PSBaseSubtreeView class]] ) {
               //  if (!((PSBaseSubtreeView *)subview).leaf) {
 
-                CGFloat xDist = (p.x - CGRectGetMidX(frame));
+                CGFloat xDist = (p.x - CGRectGetMaxX(frame));
                 CGFloat yDist = (p.y - CGRectGetMidY(frame));
                 CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
         
-                if (*closestNodeViewDistance > distance) {
-                    *closestNodeViewDistance = distance;
-                    if ([subview isKindOfClass:[PSBaseSubtreeView class]]) {
-                        *modelNode = [(PSBaseSubtreeView *)subview modelNode];
+                if (subview == [self nodeView]) {
+
+                    if (*closestNodeViewDistance > distance) {
+                        *closestNodeViewDistance = distance;
+
+                            *modelNode = [self modelNode];
                     }
-                }
-                if (/*((PSBaseSubtreeView *)subview).leaf ||*/ subview == [self nodeView]) {
-                    
-                    MProjectWrapper* node = [self modelNode];
-                    MXYNode* mxnode = [node getNode];
-                    
-                    NSLog(@"leaf %@",mxnode.data.taskName);
                     
                 }
         if ([subview isKindOfClass:[PSBaseSubtreeView class]]) {
