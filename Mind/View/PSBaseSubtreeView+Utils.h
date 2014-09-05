@@ -13,4 +13,9 @@
 
 - (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect inverse:(BOOL*)inverse;
 
+
+//calculating closet model node for point touch on basee tree
+
+-(id <PSTreeGraphModelNode>)closestModelforPoint: (CGPoint)p;
+
 @end

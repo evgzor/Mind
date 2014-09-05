@@ -8,6 +8,7 @@
 
 #import "PSBaseSubtreeView+Utils.h"
 #import "PSBaseTreeGraphView.h"
+#import "MProjectWrapper.h"
 
 @implementation PSBaseSubtreeView (Utils)
 
@@ -51,10 +52,9 @@
     return nil;
 }
 
-static float closestNodeViewDistance = MAXFLOAT;
-static id <PSTreeGraphModelNode> modelNode = nil;
 
-- (id <PSTreeGraphModelNode> ) modelNodeClosestlToPoint:(CGPoint) p
+
+- (void) modelNodeClosestlToPoint:(CGPoint) p forModel:(id <PSTreeGraphModelNode> *)modelNode andDistance:(CGFloat*) closestNodeViewDistance
 {
     // Check for intersection with our subviews, enumerating them in reverse order to get
     // front-to-back ordering.  We could use UIView's -hitTest: method here, but we don't
@@ -71,31 +71,53 @@ static id <PSTreeGraphModelNode> modelNode = nil;
         CGPoint subviewPoint = [subview convertPoint:p fromView:self];
 		//
 		//		  if (CGPointInRect(subviewPoint, subviewBounds)) {
+        CGRect frame = subview.frame;
         
-		if ( [subview pointInside:subviewPoint withEvent:nil]  ) {
+		//if ( [subview pointInside:p withEvent:nil]  ) {
             
-            if (subview == [self nodeView]) {
-                
-                CGFloat xDist = (p.x - CGRectGetMidX(subview.frame));
-                CGFloat yDist = (p.y - CGRectGetMidY(subview.frame));
-                CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
-                if (closestNodeViewDistance > distance ) {
-                    closestNodeViewDistance = distance;
-                    modelNode = [self modelNode];
-                }
+            //if ( [subview isKindOfClass:[PSBaseSubtreeView class]] ) {
+              //  if (!((PSBaseSubtreeView *)subview).leaf) {
 
-                return [self modelNode];
-            } else if ( [subview isKindOfClass:[PSBaseSubtreeView class]] ) {
-                return [(PSBaseSubtreeView *)subview modelNodeAtPoint:subviewPoint];
-            } else {
-                // Ignore subview. It's probably a BranchView.
-            }
+                CGFloat xDist = (p.x - CGRectGetMidX(frame));
+                CGFloat yDist = (p.y - CGRectGetMidY(frame));
+                CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
+        
+                if (*closestNodeViewDistance > distance) {
+                    *closestNodeViewDistance = distance;
+                    if ([subview isKindOfClass:[PSBaseSubtreeView class]]) {
+                        *modelNode = [(PSBaseSubtreeView *)subview modelNode];
+                    }
+                }
+                if (/*((PSBaseSubtreeView *)subview).leaf ||*/ subview == [self nodeView]) {
+                    
+                    MProjectWrapper* node = [self modelNode];
+                    MXYNode* mxnode = [node getNode];
+                    
+                    NSLog(@"leaf %@",mxnode.data.taskName);
+                    
+                }
+        if ([subview isKindOfClass:[PSBaseSubtreeView class]]) {
+             [(PSBaseSubtreeView *)subview modelNodeClosestlToPoint:subviewPoint forModel:modelNode andDistance:closestNodeViewDistance];
         }
-    }
+        
+              //  }
+                
+           // }
+            
+        //}
+        
+}
     
-    // We didn't find a hit.
-    return nil;
+}
+
+-(id <PSTreeGraphModelNode>)closestModelforPoint: (CGPoint)p
+{
+    CGFloat closestNodeViewDistance = MAXFLOAT;
+    id<PSTreeGraphModelNode> modelNode = nil;
     
+    [self modelNodeClosestlToPoint:p forModel:&modelNode andDistance:&closestNodeViewDistance];
+    
+    return modelNode;
 }
 
 @end

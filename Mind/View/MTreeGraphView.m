@@ -59,6 +59,9 @@
     if([touch tapCount] == 2) {
         
         NSLog(@"double touch");
+        
+        id <PSTreeGraphModelNode> foundedModelNode = [self modelClosestToPoint:viewPoint];
+        
     }
 
      
@@ -148,6 +151,22 @@
 }
 */
 
+- (id <PSTreeGraphModelNode> ) modelClosestToPoint:(CGPoint)p
+{
+    // Since we've composed our content using views (SubtreeViews and enclosed nodeViews),
+    // we can use UIView's -hitTest: method to easily identify our deepest descendant view
+    // under the given point. We rely on the front-to-back order of hit-testing to ensure
+    // that we return the root of a collapsed subtree, instead of one of its descendant nodes.
+    // (To do this, we must make sure, when collapsing a subtree, to keep the SubtreeView's
+    // nodeView frontmost among its siblings.)
+    
+    PSBaseSubtreeView *rootSubtreeView = [self rootSubtreeView];
+    CGPoint subviewPoint = [self convertPoint:p toView:rootSubtreeView];
+    
+    id <PSTreeGraphModelNode> foundedModelNode = [[self rootSubtreeView] closestModelforPoint:subviewPoint];
+    
+    return foundedModelNode;
+}
 
 
 @end
