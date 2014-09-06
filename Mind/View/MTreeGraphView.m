@@ -168,5 +168,30 @@
     return foundedModelNode;
 }
 
+- (NSArray*) projectsOverlappedByOffset: (CGFloat)xOffset
+{
+    PSBaseSubtreeView *rootSubtreeView = [self rootSubtreeView];
+    
+    NSMutableArray* overlapedProjects = [@[] mutableCopy];
+
+    
+    for (UIView* subView in rootSubtreeView.subviews)
+    {
+        if ([subView isKindOfClass:[PSBaseSubtreeView class]]) {
+            CGRect nodebounds = [(PSBaseSubtreeView*)subView nodeView].bounds;
+            CGFloat xNodeEdge = [(PSBaseSubtreeView*)subView frame].origin.x + nodebounds.size.width;
+            if (xNodeEdge < xOffset) {
+                NSString* projectName = [(MProjectWrapper*)[(PSBaseSubtreeView*)subView modelNode] getNode].data.taskName;
+                NSDictionary* overlapedProject = [NSDictionary dictionaryWithObject:[NSValue valueWithCGRect:subView.frame] forKey:projectName];
+                
+                [overlapedProjects addObject:overlapedProject];
+                
+                NSLog(@"%@",[(PSBaseSubtreeView*)subView modelNode]);
+            }
+        }
+    }
+    return overlapedProjects;
+}
+
 
 @end
