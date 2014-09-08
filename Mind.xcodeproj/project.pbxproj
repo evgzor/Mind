@@ -19,6 +19,10 @@
 		0D42554B19A7834900ED96FA /* PSBaseLeafView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9BB19A73002003EDDC2 /* PSBaseLeafView.m */; };
 		0D42554C19A7834900ED96FA /* PSBaseSubtreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9BD19A73002003EDDC2 /* PSBaseSubtreeView.m */; };
 		0D42554D19A7834900ED96FA /* PSBaseTreeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9BF19A73002003EDDC2 /* PSBaseTreeGraphView.m */; };
+		0D6B7DF819BDD727005CB88E /* MCalendarCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6B7DF319BDD727005CB88E /* MCalendarCellView.m */; };
+		0D6B7DF919BDD727005CB88E /* MCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6B7DF519BDD727005CB88E /* MCalendarView.m */; };
+		0D6B7DFA19BDD727005CB88E /* MCustomBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6B7DF719BDD727005CB88E /* MCustomBadgeView.m */; };
+		0D6B7DFD19BDE0E5005CB88E /* MCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6B7DFC19BDE0E5005CB88E /* MCalendarVC.m */; };
 		0D9CF97F19A72CE4003EDDC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9CF97E19A72CE4003EDDC2 /* Foundation.framework */; };
 		0D9CF98119A72CE4003EDDC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9CF98019A72CE4003EDDC2 /* CoreGraphics.framework */; };
 		0D9CF98319A72CE4003EDDC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9CF98219A72CE4003EDDC2 /* UIKit.framework */; };
@@ -70,6 +74,14 @@
 		0D42554419A776C100ED96FA /* MProjectLeafView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MProjectLeafView.m; path = Mind/View/MProjectLeafView.m; sourceTree = "<group>"; };
 		0D42554619A7775F00ED96FA /* MProject.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MProject.xib; path = Mind/View/MProject.xib; sourceTree = "<group>"; };
 		0D42554819A7789100ED96FA /* MTaskNode.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MTaskNode.xib; path = Mind/View/MTaskNode.xib; sourceTree = "<group>"; };
+		0D6B7DF219BDD727005CB88E /* MCalendarCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCalendarCellView.h; path = Mind/View/Calendar/MCalendarCellView.h; sourceTree = "<group>"; };
+		0D6B7DF319BDD727005CB88E /* MCalendarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCalendarCellView.m; path = Mind/View/Calendar/MCalendarCellView.m; sourceTree = "<group>"; };
+		0D6B7DF419BDD727005CB88E /* MCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCalendarView.h; path = Mind/View/Calendar/MCalendarView.h; sourceTree = "<group>"; };
+		0D6B7DF519BDD727005CB88E /* MCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCalendarView.m; path = Mind/View/Calendar/MCalendarView.m; sourceTree = "<group>"; };
+		0D6B7DF619BDD727005CB88E /* MCustomBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCustomBadgeView.h; path = Mind/View/Calendar/MCustomBadgeView.h; sourceTree = "<group>"; };
+		0D6B7DF719BDD727005CB88E /* MCustomBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCustomBadgeView.m; path = Mind/View/Calendar/MCustomBadgeView.m; sourceTree = "<group>"; };
+		0D6B7DFB19BDE0E5005CB88E /* MCalendarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCalendarVC.h; path = ViewControllers/MCalendarVC.h; sourceTree = "<group>"; };
+		0D6B7DFC19BDE0E5005CB88E /* MCalendarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCalendarVC.m; path = ViewControllers/MCalendarVC.m; sourceTree = "<group>"; };
 		0D9CF97B19A72CE4003EDDC2 /* Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9CF97E19A72CE4003EDDC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D9CF98019A72CE4003EDDC2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,6 +156,7 @@
 		0D42553919A7755F00ED96FA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0D6B7DF119BDD709005CB88E /* Calendar */,
 				0D42554319A776C100ED96FA /* MProjectLeafView.h */,
 				0D42554419A776C100ED96FA /* MProjectLeafView.m */,
 				0D42553A19A775A300ED96FA /* MTreeGraphView.h */,
@@ -160,6 +173,19 @@
 				F05D031119B61AD700813754 /* MTimeLineView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		0D6B7DF119BDD709005CB88E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				0D6B7DF219BDD727005CB88E /* MCalendarCellView.h */,
+				0D6B7DF319BDD727005CB88E /* MCalendarCellView.m */,
+				0D6B7DF419BDD727005CB88E /* MCalendarView.h */,
+				0D6B7DF519BDD727005CB88E /* MCalendarView.m */,
+				0D6B7DF619BDD727005CB88E /* MCustomBadgeView.h */,
+				0D6B7DF719BDD727005CB88E /* MCustomBadgeView.m */,
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		0D9CF97219A72CE4003EDDC2 = {
@@ -270,6 +296,8 @@
 		0D9CF9C719A73014003EDDC2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0D6B7DFB19BDE0E5005CB88E /* MCalendarVC.h */,
+				0D6B7DFC19BDE0E5005CB88E /* MCalendarVC.m */,
 				0D9CF9C819A73059003EDDC2 /* MLoginPageVC.h */,
 				0D9CF9C919A73059003EDDC2 /* MLoginPageVC.m */,
 				0D9CF9CB19A73210003EDDC2 /* MProjectVC.h */,
@@ -398,11 +426,15 @@
 			files = (
 				0D42554A19A7834900ED96FA /* PSBaseBranchView.m in Sources */,
 				0D42554B19A7834900ED96FA /* PSBaseLeafView.m in Sources */,
+				0D6B7DFA19BDD727005CB88E /* MCustomBadgeView.m in Sources */,
+				0D6B7DF819BDD727005CB88E /* MCalendarCellView.m in Sources */,
 				0D42554C19A7834900ED96FA /* PSBaseSubtreeView.m in Sources */,
 				0D42554D19A7834900ED96FA /* PSBaseTreeGraphView.m in Sources */,
 				0D9CF9D019A7427A003EDDC2 /* EditProjectVC.m in Sources */,
 				0D9CF99819A72CE4003EDDC2 /* ViewController.m in Sources */,
+				0D6B7DFD19BDE0E5005CB88E /* MCalendarVC.m in Sources */,
 				0D9CF9DD19A75F80003EDDC2 /* MTaskModel.m in Sources */,
+				0D6B7DF919BDD727005CB88E /* MCalendarView.m in Sources */,
 				0D9CF9CD19A73210003EDDC2 /* MProjectVC.m in Sources */,
 				0D03630319B483AE00232E43 /* PSBaseSubtreeView+Utils.m in Sources */,
 				0D42554519A776C100ED96FA /* MProjectLeafView.m in Sources */,

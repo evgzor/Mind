@@ -9,6 +9,7 @@
 #import "MProjectVC.h"
 #import "MProjectWrapper.h"
 #import "PSBaseSubtreeView.h"
+#import "MCalendarVC.h"
 
 
 @interface MProjectVC ()
@@ -54,6 +55,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Calendar"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(showCalendar:)];
+    [self.navigationItem setRightBarButtonItem:item animated:YES];
+    
+    
     // Do any additional setup after loading the view.
     _projectViews = [@[] mutableCopy];
 	// Set the delegate to self.
@@ -339,5 +347,12 @@
     
 }
 
+#pragma mark - show calendar
+
+-(void) showCalendar:(id) sender
+{
+    MCalendarVC *vc = [STORY_BOARD instantiateViewControllerWithIdentifier:@"MCalendar"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end
