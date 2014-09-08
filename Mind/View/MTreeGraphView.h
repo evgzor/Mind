@@ -12,5 +12,6 @@
 
 - (id <PSTreeGraphModelNode> ) connectToModelNodeAtRect:(CGRect)rect inverse:(BOOL*)inverse;
 
+- (NSArray*) projectsOverlappedByOffset: (CGFloat)xOffset;
 
 @end

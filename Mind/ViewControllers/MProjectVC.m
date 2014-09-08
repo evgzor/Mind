@@ -330,7 +330,7 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_timeLine moveTickOffset:scrollView.contentOffset.x];
-    NSLog(@"Content offset %f",scrollView.contentOffset.x);
+    //NSLog(@"Content offset %f",scrollView.contentOffset.x);
     
     CGRect visibleRect;
     visibleRect.origin = scrollView.contentOffset;
@@ -343,7 +343,14 @@
     visibleRect.size.width *= theScale;
     visibleRect.size.height *= theScale;
     
-    NSLog(@"Visible rect x=%f y = %f",visibleRect.origin.x,visibleRect.origin.y);
+    //NSLog(@"Visible rect x=%f y = %f",visibleRect.origin.x,visibleRect.origin.y);
+    
+    NSArray *overlappedPrjects = [_treeGraphView projectsOverlappedByOffset:visibleRect.origin.x];
+    
+    for (NSDictionary*project in overlappedPrjects) {
+       NSString* projectName = [project allKeys][0];
+        NSLog(@"%@",projectName);
+    }
     
 }
 
