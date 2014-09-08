@@ -116,18 +116,26 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ST0-pM-gr2" customClass="MCalendarView">
+                            <view contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ST0-pM-gr2" customClass="MCalendarView">
                                 <rect key="frame" x="0.0" y="0.0" width="515" height="704"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b3o-nU-Ywo">
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b3o-nU-Ywo">
                                 <rect key="frame" x="515" y="0.0" width="510" height="704"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ST0-pM-gr2" firstAttribute="width" secondItem="b3o-nU-Ywo" secondAttribute="width" placeholder="YES" id="5fF-79-vqw"/>
+                            <constraint firstItem="ALF-LE-F77" firstAttribute="top" secondItem="b3o-nU-Ywo" secondAttribute="bottom" placeholder="YES" id="FS7-US-zjZ"/>
+                            <constraint firstItem="ST0-pM-gr2" firstAttribute="height" secondItem="b3o-nU-Ywo" secondAttribute="height" placeholder="YES" id="RyY-Ey-zxU"/>
+                            <constraint firstAttribute="trailing" secondItem="b3o-nU-Ywo" secondAttribute="trailing" constant="-1" placeholder="YES" id="Wvb-wh-pJv"/>
+                            <constraint firstItem="ST0-pM-gr2" firstAttribute="top" secondItem="PX9-cg-i0W" secondAttribute="bottom" placeholder="YES" id="ZCP-VJ-qy9"/>
+                            <constraint firstItem="ST0-pM-gr2" firstAttribute="leading" secondItem="R0c-tf-Zmz" secondAttribute="leading" placeholder="YES" id="eyy-0o-a8g"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
