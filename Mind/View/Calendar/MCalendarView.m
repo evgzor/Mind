@@ -308,7 +308,7 @@ static const CGFloat kDefaultWeekBarHeight = 18.0f;
         _monthLabel = [[UILabel alloc] init];
         _monthLabel.font = [UIFont boldSystemFontOfSize:16.0f];
         _monthLabel.textColor = [UIColor blackColor];
-        _monthLabel.textAlignment = UITextAlignmentCenter;
+        _monthLabel.textAlignment =  NSTextAlignmentCenter;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _monthLabel.backgroundColor = [UIColor clearColor];
         [self.monthBar addSubview: _monthLabel];
@@ -368,7 +368,7 @@ static const CGFloat kDefaultWeekBarHeight = 18.0f;
             label.backgroundColor = [UIColor clearColor];
             label.tag = i;
             label.font = [UIFont systemFontOfSize:10];
-            label.textAlignment = UITextAlignmentCenter;
+            label.textAlignment = NSTextAlignmentCenter;
             label.text = [[_dateFormatter shortWeekdaySymbols] objectAtIndex:index];
 
             [labels addObject:label];

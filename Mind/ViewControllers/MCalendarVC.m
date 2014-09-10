@@ -33,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.taskList.layer.borderColor = [UIColor redColor].CGColor;
+    self.taskList.layer.borderWidth = 1.;
     // Do any additional setup after loading the view.
 }
 
