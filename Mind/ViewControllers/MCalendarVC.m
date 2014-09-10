@@ -61,9 +61,22 @@
     if (!self.layoutConstraintsPortrait) {
         UIView *calendar = self.calendarView;
         UIView *taskList = self.taskList;
-        self.layoutConstraintsPortrait = [[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[calendar]-[taskList]-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:NSDictionaryOfVariableBindings(calendar, taskList)] mutableCopy];
-        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:calendar attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem: calendar.superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:taskList attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:taskList.superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        self.layoutConstraintsPortrait = [[NSLayoutConstraint constraintsWithVisualFormat:@"V:[calendar]-0-[taskList]-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:NSDictionaryOfVariableBindings(calendar, taskList)] mutableCopy];
+       
+        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:calendar attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem: taskList attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+        
+        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:calendar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:taskList attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+        
+        
+        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:taskList attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+        
+        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:taskList attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+        
+        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:calendar attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+        
+        [self.layoutConstraintsPortrait addObject:[NSLayoutConstraint constraintWithItem:calendar attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+
+        
     }
     
     // constraints for landscape orientation
@@ -71,14 +84,16 @@
     if (!self.layoutConstraintsLandscape) {
         UIView *calendar = self.calendarView;
         UIView *taskList = self.taskList;
-        self.layoutConstraintsLandscape = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[calendar]-[taskList]-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:NSDictionaryOfVariableBindings(calendar, taskList)] mutableCopy];
-        [self.layoutConstraintsLandscape addObject:[NSLayoutConstraint constraintWithItem:calendar attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:taskList.superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-        [self.layoutConstraintsLandscape addObject:[NSLayoutConstraint constraintWithItem:taskList attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem: taskList.superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        
+        self.layoutConstraintsLandscape = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[calendar]-0-[taskList]-0-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:NSDictionaryOfVariableBindings(calendar, taskList)] mutableCopy];
+
     }
     
     BOOL isPortrait = UIInterfaceOrientationIsPortrait(self.interfaceOrientation);
     [self.view removeConstraints:isPortrait ? self.layoutConstraintsLandscape : self.layoutConstraintsPortrait];
     [self.view addConstraints:isPortrait ? self.layoutConstraintsPortrait : self.layoutConstraintsLandscape];
+    
+    
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
