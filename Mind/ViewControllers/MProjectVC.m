@@ -10,7 +10,7 @@
 #import "MProjectWrapper.h"
 #import "PSBaseSubtreeView.h"
 #import "MCalendarVC.h"
-
+#import "MEditProjectVC.h"
 
 @interface MProjectVC ()
 
@@ -326,6 +326,14 @@
     [self setProjectNode:project];
     _project = project;
 }
+
+-(void)editTask
+{
+    MEditProjectVC* vc  = [STORY_BOARD instantiateViewControllerWithIdentifier:@"MEditProject"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - ScrollView protocol methods
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

@@ -13,7 +13,7 @@
 
 @interface MTaskLeafView : PSBaseLeafView
 
-@property (nonatomic,weak) id<RedrawLeafs> delegate;
+@property (nonatomic, weak) id<RedrawLeafs> delegate;
 
 
 @property (nonatomic, weak) IBOutlet UIButton *expandButton;
@@ -28,5 +28,6 @@
 @protocol RedrawLeafs <NSObject>
 
 -(void) updateView;
+-(void) editTask;
 
 @end

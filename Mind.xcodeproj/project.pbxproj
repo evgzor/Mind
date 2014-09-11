@@ -44,7 +44,7 @@
 		0D9CF9C619A73002003EDDC2 /* PSBaseTreeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9BF19A73002003EDDC2 /* PSBaseTreeGraphView.m */; };
 		0D9CF9CA19A73059003EDDC2 /* MLoginPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9C919A73059003EDDC2 /* MLoginPageVC.m */; };
 		0D9CF9CD19A73210003EDDC2 /* MProjectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9CC19A73210003EDDC2 /* MProjectVC.m */; };
-		0D9CF9D019A7427A003EDDC2 /* EditProjectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9CF19A7427A003EDDC2 /* EditProjectVC.m */; };
+		0D9CF9D019A7427A003EDDC2 /* MEditProjectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9CF19A7427A003EDDC2 /* MEditProjectVC.m */; };
 		0D9CF9D419A75848003EDDC2 /* MProjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9D319A75848003EDDC2 /* MProjectWrapper.m */; };
 		0D9CF9DA19A75F5A003EDDC2 /* MXYNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9D919A75F5A003EDDC2 /* MXYNode.m */; };
 		0D9CF9DD19A75F80003EDDC2 /* MTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CF9DC19A75F80003EDDC2 /* MTaskModel.m */; };
@@ -117,8 +117,8 @@
 		0D9CF9C919A73059003EDDC2 /* MLoginPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLoginPageVC.m; path = ViewControllers/MLoginPageVC.m; sourceTree = "<group>"; };
 		0D9CF9CB19A73210003EDDC2 /* MProjectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MProjectVC.h; path = ViewControllers/MProjectVC.h; sourceTree = "<group>"; };
 		0D9CF9CC19A73210003EDDC2 /* MProjectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MProjectVC.m; path = ViewControllers/MProjectVC.m; sourceTree = "<group>"; };
-		0D9CF9CE19A7427A003EDDC2 /* EditProjectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditProjectVC.h; path = ViewControllers/EditProjectVC.h; sourceTree = "<group>"; };
-		0D9CF9CF19A7427A003EDDC2 /* EditProjectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditProjectVC.m; path = ViewControllers/EditProjectVC.m; sourceTree = "<group>"; };
+		0D9CF9CE19A7427A003EDDC2 /* MEditProjectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEditProjectVC.h; path = ViewControllers/MEditProjectVC.h; sourceTree = "<group>"; };
+		0D9CF9CF19A7427A003EDDC2 /* MEditProjectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MEditProjectVC.m; path = ViewControllers/MEditProjectVC.m; sourceTree = "<group>"; };
 		0D9CF9D219A75848003EDDC2 /* MProjectWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MProjectWrapper.h; path = Mind/Model/MProjectWrapper.h; sourceTree = SOURCE_ROOT; };
 		0D9CF9D319A75848003EDDC2 /* MProjectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MProjectWrapper.m; path = Mind/Model/MProjectWrapper.m; sourceTree = SOURCE_ROOT; };
 		0D9CF9D819A75F5A003EDDC2 /* MXYNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXYNode.h; path = Mind/Model/MXYNode.h; sourceTree = SOURCE_ROOT; };
@@ -302,8 +302,8 @@
 				0D9CF9C919A73059003EDDC2 /* MLoginPageVC.m */,
 				0D9CF9CB19A73210003EDDC2 /* MProjectVC.h */,
 				0D9CF9CC19A73210003EDDC2 /* MProjectVC.m */,
-				0D9CF9CE19A7427A003EDDC2 /* EditProjectVC.h */,
-				0D9CF9CF19A7427A003EDDC2 /* EditProjectVC.m */,
+				0D9CF9CE19A7427A003EDDC2 /* MEditProjectVC.h */,
+				0D9CF9CF19A7427A003EDDC2 /* MEditProjectVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 				0D6B7DF819BDD727005CB88E /* MCalendarCellView.m in Sources */,
 				0D42554C19A7834900ED96FA /* PSBaseSubtreeView.m in Sources */,
 				0D42554D19A7834900ED96FA /* PSBaseTreeGraphView.m in Sources */,
-				0D9CF9D019A7427A003EDDC2 /* EditProjectVC.m in Sources */,
+				0D9CF9D019A7427A003EDDC2 /* MEditProjectVC.m in Sources */,
 				0D9CF99819A72CE4003EDDC2 /* ViewController.m in Sources */,
 				0D6B7DFD19BDE0E5005CB88E /* MCalendarVC.m in Sources */,
 				0D9CF9DD19A75F80003EDDC2 /* MTaskModel.m in Sources */,

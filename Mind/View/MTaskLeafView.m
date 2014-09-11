@@ -38,6 +38,11 @@
     return self;
 }
 
+-(void)dealloc
+{
+    self.delegate = nil;
+}
+
 #pragma mark - gestiure recognizer
 
 - (IBAction) detectPan:(UIPanGestureRecognizer *) uiPanGestureRecognizer
@@ -101,6 +106,14 @@
         
         // Remember original location
         lastLocation = self.center;
+    }
+    
+    if([touch tapCount] == 2) {
+        
+        NSLog(@"double touch");
+        
+        [self.delegate editTask];
+        
     }
 }
 

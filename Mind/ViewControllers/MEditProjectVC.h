@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditProjectVC : UIViewController
+@interface MEditProjectVC : UIViewController
 
 @end
